@@ -1,6 +1,9 @@
 <?php
 // abre a conexao com o postgres
-$conn = mysqli_connect("127.0.0.1", "root", "123456789", "livro");
+$serverName = "172.22.8.16"; //serverName\instanceName
+$connectionInfo = array( "Database"=>"livro", "UID"=>"sa", "PWD"=>"237homologacao2211");
+$conn = sqlsrv_connect( $serverName, $connectionInfo);
+
 
 mysqli_query($conn, "INSERT INTO famosos (codigo, nome) VALUES (1, 'Erico Verissimo')");
 mysqli_query($conn, "INSERT INTO famosos (codigo, nome) VALUES (2, 'John Lennon')");

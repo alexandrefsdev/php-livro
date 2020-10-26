@@ -1,28 +1,32 @@
-CREATE TABLE `livro`.`cidade` (
-`id` integer primary key not null,
-`nome` text,
-`id_estado` integer references estado(id)
+CREATE TABLE livro.dbo.estado (
+	id int primary key NOT NULL,
+	sigla char(2),
+	nome text
+)
+
+CREATE TABLE livro.dbo.cidade (
+	id int PRIMARY KEY NOT NULL,
+	nome text,
+	id_estado int,
+	CONSTRAINT Fk_Cidade_Estado FOREIGN KEY (id_estado)
+	REFERENCES estado(id)
+)
+
+CREATE TABLE livro.dbo.pessoa (
+	id int PRIMARY KEY NOT NULL,
+	nome varchar(100),
+	endereco varchar(200),
+	bairro varchar(100),
+	telefone varchar(30),
+	email varchar(100),
+	id_cidade int,
+	CONSTRAINT FK_Pessoa_Cidade FOREIGN KEY (id_cidade)
+	REFERENCES cidade(id)
 );
 
-ALTER TABLE cidade
-ADD FOREIGN KEY (id_estado) REFERENCES estado(id);
+INSERT INTO livro.dbo.estado VALUES (1, 'AC', 'Acre');
+INSERT INTO livro.dbo.estado VALUES (2, 'BA', 'Bahia');
+INSERT INTO livro.dbo.cidade VALUES (1, 'Rio Branco', '1');
+INSERT INTO livro.dbo.cidade VALUES (2, 'Salvador', '2');
 
-CREATE TABLE pessoa (
-	id integer primary key not null,
-    nome TEXT,
-    endereco TEXT,
-    bairro TEXT,
-    telefone TEXT,
-    email TEXT,
-    id_cidade integer,
-    CONSTRAINT FK_Pessoa_Cidade FOREIGN KEY (id_cidade)
-    REFERENCES cidade(id)
-);
-
-INSERT INTO estado VALUES (1, 'AC', 'Acre');
-INSERT INTO cidade VALUES (1, 'Rio Branco', '1');
-INSERT INTO estado VALUES (2, 'BA', 'Salvador');
-INSERT INTO cidade VALUES (2, 'Salvador', '2');
-
-
-SELECT id, nome FROM cidade;
+SELECT id, nome FROM livro.dbo.cidade;
