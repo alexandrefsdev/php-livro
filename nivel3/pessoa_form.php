@@ -31,7 +31,7 @@ if (!empty($_REQUEST['action'])) {
             $sql = "INSERT INTO livro.dbo.pessoa (id, nome, endereco, bairro, telefone, email, id_cidade)
             VALUES ( '{$next}', '{$pessoa['nome']}', '{$pessoa['endereco']}', '{$pessoa['bairro']}', '{$pessoa['telefone']}', '{$pessoa['email']}', '{$pessoa['id_cidade']}')";
 
-            $stmt = sqlsrv_query($conn, $sql) or die(print_r(sqlsrv_errors()));;
+            $stmt = sqlsrv_query($conn, $sql) or die(print_r(sqlsrv_errors()));
 
         } else {
             $sql = "UPDATE livro.dbo.pessoa SET nome = '{$pessoa['nome']}',
