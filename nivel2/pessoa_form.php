@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cadastro de Pessoa</title>
-    <link rel="stylesheet" type="text/css" href="css/form.css" media="screen" />
+    <link rel="stylesheet" type="text/css" href="css/style.css" media="screen" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
 </head>
 
@@ -87,23 +87,23 @@ if (!empty($_REQUEST['action'])) {
             </div>
             <div class="form-row">
                 <label for="">Nome</label>
-                <input type="text" name="nome" value="<?= $nome ?>" style="width: 50%;">
+                <input class="form-control" type="text" name="nome" value="<?= $nome ?>" style="width: 50%;">
             </div>
             <div class="form-row">
                 <label for="">Endereco</label>
-                <input type="text" name="endereco" value="<?= $endereco ?>" style="width: 50%;">
+                <input class="form-control" type="text" name="endereco" value="<?= $endereco ?>" style="width: 50%;">
             </div>
             <div class="form-row">
                 <label for="">Bairro</label>
-                <input type="text" name="bairro" value="<?= $bairro ?>" style="width: 50%;">
+                <input class="form-control" type="text" name="bairro" value="<?= $bairro ?>" style="width: 50%;">
             </div>
             <div class="form-row">
                 <label for="">Telefone</label>
-                <input type="text" name="telefone" value="<?= $telefone ?>" style="width: 25%;">
+                <input class="form-control" type="text" name="telefone" value="<?= $telefone ?>" style="width: 25%;">
             </div>
             <div class="form-row">
                 <label for="inputEmail4">Email</label>
-                <input type="email" name="email" value="<?= $email ?>" style="width: 25%;">
+                <input class="form-control" type="email" name="email" value="<?= $email ?>" style="width: 25%;">
             </div>
             <div class="form-row">
                 <label for="">Cidade</label>

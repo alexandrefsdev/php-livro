@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro de Pessoa</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+    <form enctype="multipart/form-data" action="pessoa_form.php?action=save" method="POST">
+        <div class="form-group">
+            <div class="form-row">
+                <label for="">Codigo</label>
+                <input class="form-control" value="{id}" type="text" name="id" readonly style="width: 30%;">
+            </div>
+            <div class="form-row">
+                <label for="">Nome</label>
+                <input class="form-control" type="text" name="nome" value="{nome}" style="width: 50%;">
+            </div>
+            <div class="form-row">
+                <label for="">Endereco</label>
+                <input class="form-control" type="text" name="endereco" value="{endereco}" style="width: 50%;">
+            </div>
+            <div class="form-row">
+                <label for="">Bairro</label>
+                <input class="form-control" type="text" name="bairro" value="{bairro}" style="width: 50%;">
+            </div>
+            <div class="form-row">
+                <label for="">Telefone</label>
+                <input class="form-control" type="text" name="telefone" value="{telefone}" style="width: 25%;">
+            </div>
+            <div class="form-row">
+                <label for="inputEmail4">Email</label>
+                <input class="form-control" type="email" name="email" value="{email}" style="width: 25%;">
+            </div>
+            <div class="form-row">
+                <label for="">Cidade</label>
+                <select class="form-control form-control" name="id_cidade" style="width: 25%;">
+                    {cidades}
+                </select>
+            </div>
+        </div>
+        <input type="submit" class="btn btn-secondary" value="ENVIAR">
+
+    </form>
+
+</body>
+
+</html>
