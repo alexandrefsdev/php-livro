@@ -1,8 +1,13 @@
 <?php
 
 if (!empty($_REQUEST['action'])) {
-    $serverName = "172.22.8.16"; //serverName\instanceName
-    $connectionInfo = array("Database" => "livro", "UID" => "sa", "PWD" => "237homologacao2211");
+    //$serverName = "172.22.8.16"; //serverName\instanceName
+    $serverName = "localhost\SQLEXPRESS"; // Casa
+
+    //$PWD = "237homologacao2211"; // Trampo
+    $PWD = "123456789"; // Casa
+
+    $connectionInfo = array("Database" => "livro", "UID" => "sa", "PWD" => $PWD );
     $conn = sqlsrv_connect($serverName, $connectionInfo);
 
     if ($conn === false) {

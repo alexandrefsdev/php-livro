@@ -2,8 +2,14 @@
 
 function lista_pessoas()
 {
-    $serverName = "172.22.8.16"; //serverName\instanceName
-    $connectionInfo = array("Database" => "livro", "UID" => "sa", "PWD" => "237homologacao2211");
+
+    //$serverName = "172.22.8.16"; //serverName\instanceName
+    $serverName = "localhost\SQLEXPRESS"; // Casa
+
+    //$PWD = "237homologacao2211"; // Trampo
+    $PWD = "123456789"; // Casa
+
+    $connectionInfo = array("Database" => "livro", "UID" => "sa", "PWD" => $PWD );
     $conn = sqlsrv_connect($serverName, $connectionInfo);
 
     if ($conn === false) {
@@ -24,9 +30,18 @@ function lista_pessoas()
 
 function exclui_pessoa($id)
 {
-    $serverName = "172.22.8.16"; //serverName\instanceName
-    $connectionInfo = array("Database" => "livro", "UID" => "sa", "PWD" => "237homologacao2211");
+    //$serverName = "172.22.8.16"; //serverName\instanceName
+    $serverName = "localhost\SQLEXPRESS"; // Casa
+
+    //$PWD = "237homologacao2211"; // Trampo
+    $PWD = "123456789"; // Casa
+
+    $connectionInfo = array("Database" => "livro", "UID" => "sa", "PWD" => $PWD );
     $conn = sqlsrv_connect($serverName, $connectionInfo);
+
+    if ($conn === false) {
+        die("<pre>" . print_r(sqlsrv_errors() . "</pre>", true));
+    }
 
     $query = "DELETE FROM livro.dbo.pessoa WHERE id='{$id}'";
     $stmt = sqlsrv_query($conn, $query);
@@ -37,9 +52,18 @@ function exclui_pessoa($id)
 
 function get_pessoa($id)
 {
-    $serverName = "172.22.8.16"; //serverName\instanceName
-    $connectionInfo = array("Database" => "livro", "UID" => "sa", "PWD" => "237homologacao2211");
+    //$serverName = "172.22.8.16"; //serverName\instanceName
+    $serverName = "localhost\SQLEXPRESS"; // Casa
+
+    //$PWD = "237homologacao2211"; // Trampo
+    $PWD = "123456789"; // Casa
+
+    $connectionInfo = array("Database" => "livro", "UID" => "sa", "PWD" => $PWD );
     $conn = sqlsrv_connect($serverName, $connectionInfo);
+
+    if ($conn === false) {
+        die("<pre>" . print_r(sqlsrv_errors() . "</pre>", true));
+    }
 
     $query = "SELECT * FROM livro.dbo.pessoa WHERE id='{$id}'";
     $stmt = sqlsrv_query($conn, $query);
@@ -52,9 +76,18 @@ function get_pessoa($id)
 
 function get_next_pessoa()
 {
-    $serverName = "172.22.8.16"; //serverName\instanceName
-    $connectionInfo = array("Database" => "livro", "UID" => "sa", "PWD" => "237homologacao2211");
+    //$serverName = "172.22.8.16"; //serverName\instanceName
+    $serverName = "localhost\SQLEXPRESS"; // Casa
+
+    //$PWD = "237homologacao2211"; // Trampo
+    $PWD = "123456789"; // Casa
+
+    $connectionInfo = array("Database" => "livro", "UID" => "sa", "PWD" => $PWD );
     $conn = sqlsrv_connect($serverName, $connectionInfo);
+
+    if ($conn === false) {
+        die("<pre>" . print_r(sqlsrv_errors() . "</pre>", true));
+    }
 
     $query = "SELECT max(id) as next FROM livro.dbo.pessoa";
     $stmt = sqlsrv_query($conn, $query);
@@ -66,12 +99,21 @@ function get_next_pessoa()
 
 function insert_pessoa($pessoa)
 {
-    $serverName = "172.22.8.16"; //serverName\instanceName
-    $connectionInfo = array("Database" => "livro", "UID" => "sa", "PWD" => "237homologacao2211");
+    //$serverName = "172.22.8.16"; //serverName\instanceName
+    $serverName = "localhost\SQLEXPRESS"; // Casa
+
+    //$PWD = "237homologacao2211"; // Trampo
+    $PWD = "123456789"; // Casa
+
+    $connectionInfo = array("Database" => "livro", "UID" => "sa", "PWD" => $PWD );
     $conn = sqlsrv_connect($serverName, $connectionInfo);
 
+    if ($conn === false) {
+        die("<pre>" . print_r(sqlsrv_errors() . "</pre>", true));
+    }
+
     $sql = "INSERT INTO livro.dbo.pessoa (id, nome, endereco, bairro, telefone, email, id_cidade)
-            VALUES ('{$pessoa['nome']}}',
+            VALUES ('{$pessoa['id']}',
                     '{$pessoa['nome']}',
                     '{$pessoa['endereco']}',
                     '{$pessoa['bairro']}',
@@ -87,9 +129,18 @@ function insert_pessoa($pessoa)
 
 function update_pessoa($pessoa)
 {
-    $serverName = "172.22.8.16"; //serverName\instanceName
-    $connectionInfo = array("Database" => "livro", "UID" => "sa", "PWD" => "237homologacao2211");
+    //$serverName = "172.22.8.16"; //serverName\instanceName
+    $serverName = "localhost\SQLEXPRESS"; // Casa
+
+    //$PWD = "237homologacao2211"; // Trampo
+    $PWD = "123456789"; // Casa
+
+    $connectionInfo = array("Database" => "livro", "UID" => "sa", "PWD" => $PWD );
     $conn = sqlsrv_connect($serverName, $connectionInfo);
+
+    if ($conn === false) {
+        die("<pre>" . print_r(sqlsrv_errors() . "</pre>", true));
+    }
 
     $sql = "UPDATE livro.dbo.pessoa SET nome = '{$pessoa['nome']}',
                                                 endereco = '{$pessoa['endereco']}',
@@ -99,4 +150,7 @@ function update_pessoa($pessoa)
                                                 id_cidade = '{$pessoa['id_cidade']}'
                                             WHERE id = '{$pessoa['id']}'";
     $stmt = sqlsrv_query($conn, $sql) or die(print_r(sqlsrv_errors()));
+
+    sqlsrv_close($conn);
+    return $stmt;
 }
